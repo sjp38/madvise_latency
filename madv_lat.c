@@ -11,6 +11,8 @@ unsigned long long rdtsc(void)
 	return (unsigned long long)hi << 32 | lo;
 }
 
+#define PAGE_ALIGN(p) ((void *)(((unsigned long long)p >> 12) << 12))
+
 int main(void)
 {
 	char **regions;
@@ -32,7 +34,8 @@ int main(void)
 		averaged_tsc = 0;
 		for (j = 0; j < nr_iters; j++) {
 			tsc = rdtsc();
-			madvise(regions[i], sz_regions[i], MADV_WILLNEED);
+			madvise(PAGE_ALIGN(regions[i]), sz_regions[i],
+					MADV_WILLNEED);
 			averaged_tsc += rdtsc() - tsc;
 		}
 		printf("%zu	%llu\n", sz_regions[i],
@@ -42,7 +45,4 @@ int main(void)
 	for (i = 0; i < nr_regions; i++)
 		free(regions[i]);
 	free(regions);
-
-
-	printf("hello\n");
 }
