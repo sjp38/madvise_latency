@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
 	pr_regions(regions, nr_regions);
 #endif
 
-	printf("size	latency (cycles)\n");
+	printf("%15s	%15s", "size", "latency (cycles)\n");
 	for (i = 0; i < nr_regions; i++) {
 		averaged_tsc = 0;
 		for (j = 0; j < nr_iters; j++) {
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
 					MADV_WILLNEED);
 			averaged_tsc += rdtsc() - tsc;
 		}
-		printf("%zu	%llu\n", regions[i].sz,
+		printf("%15zu	%15llu\n", regions[i].sz,
 				averaged_tsc / nr_iters);
 	}
 
