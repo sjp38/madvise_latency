@@ -123,9 +123,6 @@ int main(int argc, char *argv[])
 
 	argp_parse(&argp, argc, argv, ARGP_IN_ORDER, NULL, NULL);
 
-	printf("iters: %u, sz_min: %zu, sz_max: %zu\n",
-			nr_iters, sz_min_region, sz_max_region);
-
 	nr_regions = mkregions(sz_min_region, sz_max_region, &regions);
 
 #ifdef DBG
