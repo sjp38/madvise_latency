@@ -43,8 +43,8 @@ static struct argp_option options[] = {
 	{}
 };
 
-unsigned nr_iters;
-size_t sz_min_region, sz_max_region;
+unsigned nr_iters = 1000;
+size_t sz_min_region = 1024, sz_max_region = 4096;
 
 error_t parse_options(int key, char *arg, struct argp_state *state)
 {
