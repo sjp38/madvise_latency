@@ -73,7 +73,7 @@ struct region {
 
 unsigned mkregions(size_t sz_min, size_t sz_max, struct region **ret_ptr)
 {
-	struct region *regions;
+	struct region *regions = NULL;
 	struct region *r;
 	size_t sz_region;
 	unsigned nr_regions;
