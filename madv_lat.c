@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
 	pr_regions(regions, nr_regions);
 #endif
 
-	printf("%15s	%15s", "size", "latency (cycles)\n");
+	printf("%15s	%15s", "size(bytes)", "latency(cycles)\n");
 	for (i = 0; i < nr_regions; i++) {
 		averaged_tsc = 0;
 		for (j = 0; j < nr_iters; j++) {
