@@ -1,4 +1,5 @@
 #include <argp.h>
+#include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
@@ -81,6 +82,8 @@ unsigned mkregions(size_t sz_min, size_t sz_max, struct region **ret_ptr)
 	for (nr_regions = 1, sz_region = sz_min; sz_region <= sz_max;
 			nr_regions += 1, sz_region *= 2) {
 		regions = realloc(regions, sizeof(struct region) * nr_regions);
+		if (regions == NULL)
+			err(1, "Failed realloc()\n");
 		r = &regions[nr_regions - 1];
 		r->sz = sz_region;
 		r->addr = (char *)malloc(sz_region);
