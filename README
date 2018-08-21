@@ -1,0 +1,17 @@
+madvise_latency
+===============
+
+A simple program that measures latency of madvise() system call for varying
+size of memory regions.
+
+
+Author
+======
+
+SeongJae Park <sj38.park@gmail.com>
+
+
+License
+=======
+
+GPL v3
